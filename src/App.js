@@ -35,7 +35,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div>
-                    <div>
+                    <div className={"Logo-div"}>
                         <h2>Login React</h2>
                         <img src={logo} className="App-logo" alt="logo"/>
                     </div>
