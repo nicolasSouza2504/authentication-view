@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App-logo {
+  height: 4vmin;
+}
+
+.App-form {
+
+}
+
+h2 {
+  float: left;
+  font-size: 3vmin;
+}
+
+img {
+  margin-top: 2vh;
+  float: left;
+}
+
+button {
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: 2.5vh;
+  background-color: #ffa900;
+  color: white;
+  width: 8vw;
+}
