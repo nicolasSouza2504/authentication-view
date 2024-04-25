@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
 
-    const [username, setUsername] = useState('')
+    const [userName, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const  handleLogin = async (event) => {
@@ -16,7 +16,7 @@ function App() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({username: username, password: password}),
+            body: JSON.stringify({userName: userName, password: password}),
         })
             .then(response => response.json())
             .then(data => {
@@ -41,11 +41,11 @@ function App() {
                     </div>
                     <form onSubmit={handleLogin}>
                         <div className={"Input-div"}>
-                            <label htmlFor="username">Username:</label>
+                            <label htmlFor="userName">Username:</label>
                             <input
                                 type="text"
-                                id="username"
-                                value={username}
+                                id="userName"
+                                value={userName}
                                 onChange={(e) => setUsername(e.target.value)}
                                 required
                             />
