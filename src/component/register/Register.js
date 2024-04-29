@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
-import logo from './logo.svg';
-import './App.css';
+import logo from '../../logo.svg';
+import '../../index.css'
+import './Register.css'
 
-function App() {
+function Register() {
 
     const [userName, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -11,7 +12,7 @@ function App() {
 
         event.preventDefault();
 
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch('http://localhost:8080/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,8 +28,6 @@ function App() {
                 return null;
             });
 
-        console.log(response)
-
     }
 
     return (
@@ -36,7 +35,7 @@ function App() {
             <header className="App-header">
                 <div>
                     <div className={"Logo-div"}>
-                        <h2>Login React</h2>
+                        <h2>Create User</h2>
                         <img src={logo} className="App-logo" alt="logo"/>
                     </div>
                     <form onSubmit={handleLogin}>
@@ -51,7 +50,7 @@ function App() {
                             />
                         </div>
                         <div className={"Input-div"}>
-                            <label htmlFor="password" >Password:</label>
+                            <label htmlFor="password">Password:</label>
                             <input
                                 type="password"
                                 id="password"
@@ -60,7 +59,7 @@ function App() {
                                 required
                             />
                         </div>
-                        <button type="submit">Login</button>
+                        <button type="submit">Create</button>
                     </form>
                 </div>
             </header>
@@ -69,4 +68,4 @@ function App() {
 
 }
 
-export default App;
+export default Register;
