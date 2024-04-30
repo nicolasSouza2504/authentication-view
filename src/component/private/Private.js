@@ -35,15 +35,17 @@ function Private() {
     }
 
     return (
-        <div className="validateAccess">
-            <button onClick={validateAccess}>Validate access private API</button>
-            {
-                responseObj && responseObj.error
-                    ? <div className={"Message-response-error"}><p>{responseObj.message}</p></div>
-                    : responseObj.message ?
-                        <div className={"Message-response-success"}><p>{responseObj.message}</p></div>
-                        : null
-            }
+        <div className="App">
+            <header className="App-header">
+                <button onClick={validateAccess}>Validate access private API</button>
+                {
+                    responseObj && responseObj.error
+                        ? <div className={"Message-response-error"}><p>{responseObj.message}</p></div>
+                        : responseObj.message ?
+                            <div className={"Message-response-success"}><p>{responseObj.message}</p></div>
+                            : null
+                }
+            </header>
         </div>
     );
 
