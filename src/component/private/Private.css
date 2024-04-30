@@ -30,7 +30,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 1);
 }
 
-button {
+.Button-validate-access {
     margin: 15px;
     text-align: center;
     border-radius: 5px;
@@ -40,4 +40,5 @@ button {
     color: white;
     width: 25vw;
 }
+
 

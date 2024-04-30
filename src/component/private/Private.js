@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import '../../index.css'
-import './Private.css'
+import styles from './Private.css'
 
 
 function Private() {
@@ -35,9 +35,9 @@ function Private() {
     }
 
     return (
-        <div className="App">
+        <div className="styles.App">
             <header className="App-header">
-                <button onClick={validateAccess}>Validate access private API</button>
+                <button className="Button-validate-access" onClick={validateAccess}>Validate access private API</button>
                 {
                     responseObj && responseObj.error
                         ? <div className={"Message-response-error"}><p>{responseObj.message}</p></div>
