@@ -17,12 +17,17 @@ function Private() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-            }
+            },
+            credentials: 'include'
         })
             .then(async response => {
 
                 if (response.status === 200) {
-                    setResponseObj({message: 'Success to access private API!', error: false});
+
+                    let res = await response.json();
+                    
+                    setResponseObj({message: res.message, error: false});
+
                 } else {
                     setResponseObj({message: 'Error to access private API!', error: true});
                 }
