@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from "react";
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../logo.svg';
 import '../../index.css'
 import './Login.css'
+
 
 function Login() {
 
     const [userName, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [responseObj, setResponseObj] = useState({});
+    const navigate = useNavigate();
 
     const  handleLogin = async (event) => {
 
