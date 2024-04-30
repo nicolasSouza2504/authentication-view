@@ -5,27 +5,36 @@ import './Register.css'
 
 function Register() {
 
-    const [userName, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [userName, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [responseObj, setResponseObj] = useState({});
 
     const  handleLogin = async (event) => {
 
         event.preventDefault();
 
-        const response = await fetch('http://localhost:8080/register', {
+        await fetch('http://localhost:8080/register/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({userName: userName, password: password}),
         })
-            .then(response => response.json())
-            .then(data => {
-                return data;
+            .then(async response => {
+
+                if (response.status === 200) {
+                    setResponseObj({message: 'User has been created', error: false});
+                } else {
+
+                    let res = await response.json();
+
+                    setResponseObj({message: 'Error creating user: '+ res.message, error: true});
+
+                }
+
             })
             .catch((error) => {
-                console.error('Error:', error);
-                return null;
+                setResponseObj({message: 'Error creating user!', error: true});
             });
 
     }
@@ -59,6 +68,13 @@ function Register() {
                                 required
                             />
                         </div>
+                            {
+                                responseObj && responseObj.error
+                                    ? <div className={"Message-response-error"}><p>{responseObj.message}</p></div>
+                                    : responseObj.message ?
+                                        <div className={"Message-response-success"}><p>{responseObj.message}</p></div>
+                                    : null
+                            }
                         <button type="submit">Create</button>
                     </form>
                 </div>

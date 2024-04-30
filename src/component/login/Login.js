@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Redirect } from 'react-router-dom';
 import logo from '../../logo.svg';
 import '../../index.css'
 import './Login.css'
@@ -7,26 +8,35 @@ function Login() {
 
     const [userName, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [responseObj, setResponseObj] = useState({});
 
     const  handleLogin = async (event) => {
 
         event.preventDefault();
 
-        const response = await fetch('http://localhost:8080/login', {
+        await fetch('http://localhost:8080/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({userName: userName, password: password}),
         })
-            .then(response => response.json())
-            .then(data => {
-                return data;
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                return null;
-            });
+        .then(async response => {
+
+            if (response.status === 200) {
+                setResponseObj({message: 'Loged in', error: false});
+            } else {
+
+                let res = await response.json();
+
+                setResponseObj({message: 'Error creating user: '+ res.message, error: true});
+
+            }
+
+        })
+        .catch((error) => {
+            setResponseObj({message: 'Error creating user!', error: true});
+        });
 
     }
 
@@ -59,6 +69,13 @@ function Login() {
                                 required
                             />
                         </div>
+                        {
+                            responseObj && responseObj.error
+                                ? <div className={"Message-response-error"}><p>{responseObj.message}</p></div>
+                                : responseObj.message ?
+                                    <div className={"Message-response-success"}><p>{responseObj.message}</p></div>
+                                    : null
+                        }
                         <button type="submit">Login</button>
                     </form>
                 </div>

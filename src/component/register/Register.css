@@ -29,3 +29,22 @@
   }
 
 }
+.Message-response-success {
+  color: white;
+  background-color: #82d271;
+  font-size: 1.5vmin;
+  border: 1px solid #34ff00;
+  border-radius: 0.5vh;
+  padding: 0px 5px 0px 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+
+.Message-response-error {
+  color: #ff0000;
+  background-color: #ef7575;
+  font-size: 1.5vmin;
+  border: 1px solid red;
+  border-radius: 0.5vh;
+  padding: 0px 5px 0px 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
