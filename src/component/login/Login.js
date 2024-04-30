@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../logo.svg';
 import '../../index.css'
 import './Login.css'
+import Cookies from 'universal-cookie';
 
 
 function Login() {
@@ -26,7 +27,15 @@ function Login() {
         .then(async response => {
 
             if (response.status === 200) {
+
                 setResponseObj({message: 'Loged in', error: false});
+
+                let session = await response.json();
+
+                const cookies = new Cookies();
+
+                cookies.set('authToken', session.authToken);
+
             } else {
 
                 let res = await response.json();
