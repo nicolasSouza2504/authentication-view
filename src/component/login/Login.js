@@ -6,6 +6,7 @@ import './Login.css'
 import Cookies from 'universal-cookie';
 
 
+
 function Login() {
 
     const [userName, setUsername] = useState('')
@@ -35,6 +36,8 @@ function Login() {
                 const cookies = new Cookies();
 
                 cookies.set('authToken', session.authToken);
+
+                navigate("/private-path")
 
             } else {
 
