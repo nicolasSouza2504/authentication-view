@@ -43,13 +43,13 @@ function Login() {
 
                 let res = await response.json();
 
-                setResponseObj({message: 'Error creating user: '+ res.message, error: true});
+                setResponseObj({message: 'Error login: '+ res.message, error: true});
 
             }
 
         })
         .catch((error) => {
-            setResponseObj({message: 'Error creating user!', error: true});
+            setResponseObj({message: 'Error login!', error: true});
         });
 
     }
